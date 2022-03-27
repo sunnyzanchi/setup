@@ -27,7 +27,7 @@ sub bash_rc {
     if ($overwrite_bash_rc) {
       print 'Overwriting .bashrc ...';
       print "\n";
-      `curl https://zanchi.github.io/setup/.bashrc -o ~/.bashrc`;
+      `curl https://zanchi.github.io/setup/.bashrc`;
     } else {
       print 'Skipping .bashrc setup';
       print "\n";
