@@ -2,7 +2,7 @@
 
 my $home = $ENV{HOME};
 
-# Thanks internet
+# Thanks internet!
 # https://stackoverflow.com/a/18104317
 sub prompt {
   my ($query) = @_; # take a prompt string as argument
@@ -18,7 +18,7 @@ sub prompt_yn {
   return lc($answer) eq 'y';
 }
 
-sub    bash_rc {
+sub bash_rc {
   if (-e "$home/.bashrc") {
     print 'Looks like a ~/.bashrc file already exists';
     print "\n";
@@ -26,14 +26,15 @@ sub    bash_rc {
 
     if ($overwrite_bash_rc) {
       print 'Overwriting .bashrc ...';
-    print "\n";
-
+      print "\n";
+      `curl https://zanchi.github.io/setup/.bashrc -o ~/.bashrc`;
     } else {
       print 'Skipping .bashrc setup';
       print "\n";
     }
   } else {
     print '~/.bashrc doesn\'t exist, creating one ...';
+    `curl https://zanchi.github.io/setup/.bashrc -o ~/.bashrc`;
     print "\n";
   }
 }
@@ -44,8 +45,8 @@ sub rust {
     print "\n";
   } else {
     print 'Installing Rust!';
+    `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`;
     print "\n";
-    # `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
   }
 }
 
